@@ -1,0 +1,51 @@
+/* -------------------------------------------------- */
+/* GOOGLE MATERIAL DESIGN THEME VARIABLES             */
+/* Light Mode (Default)                               */
+/* -------------------------------------------------- */
+
+:root {
+  /* Google Colors */
+  --google-blue: #4285F4;
+  --google-red: #EA4335;
+  --google-yellow: #FBBC05;
+  --google-green: #34A853;
+
+  /* Light Theme */
+  --bg: #ffffff;
+  --text: #202124;
+  --card: #f8f9fa;
+
+  /* Borders, dividers */
+  --border: #dadce0;
+
+  /* Google Gradients */
+  --google-gradient: linear-gradient(
+    90deg,
+    #4285F4,
+    #EA4335,
+    #FBBC05,
+    #34A853
+  );
+}
+
+/* -------------------------------------------------- */
+/* DARK MODE (Material Dark Theme)                    */
+/* -------------------------------------------------- */
+
+.dark {
+  --bg: #121212;
+  --text: #E8EAED;
+  --card: #1E1E1E;
+
+  /* Dark border */
+  --border: #2c2c2c;
+
+  /* Google Gradient still same */
+  --google-gradient: linear-gradient(
+    90deg,
+    #4285F4,
+    #EA4335,
+    #FBBC05,
+    #34A853
+  );
+}

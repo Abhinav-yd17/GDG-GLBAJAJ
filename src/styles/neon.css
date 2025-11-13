@@ -1,0 +1,26 @@
+/* ✨ FIXED – neon-card now supports dark mode */
+.neon-card {
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* 🌞 LIGHT MODE */
+html:not(.dark) .neon-card {
+  background: rgba(255, 255, 255, 0.7);       /* white glass */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 🌙 DARK MODE */
+html.dark .neon-card {
+  background: #111827;                        /* same as BLOG page */
+  border: 1px solid #1f2937;                  /* blog-style border */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1); /* light neon glow */
+}
+
+/* Hover effect preserved */
+.neon-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}

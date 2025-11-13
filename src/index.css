@@ -1,0 +1,94 @@
+/* ---------------------------------------
+   IMPORTS (keep these at the very top)
+--------------------------------------- */
+@import './styles/variables.css';
+@import './styles/neon.css';
+@import './styles/transitions.css';
+@import './styles/animations.css';
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------
+   GLOBAL RESET
+--------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------
+   GOOGLE THEME: LIGHT MODE (DEFAULT)
+--------------------------------------- */
+:root {
+  --bg: #ffffff;
+  --text: #202124;
+  --card: #f8f9fa;
+
+  /* Google Colors */
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+}
+
+/* ---------------------------------------
+   GOOGLE THEME: DARK MODE
+--------------------------------------- */
+.dark {
+  --bg: #121212;
+  --text: #e8eaed;
+  --card: #1e1e1e;
+}
+
+/* ---------------------------------------
+   BODY STYLING
+--------------------------------------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* ---------------------------------------
+   CUSTOM GOOGLE-STYLE SCROLLBAR
+--------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--google-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--google-green);
+}
+
+/* ---------------------------------------
+   GRADIENT ANIMATION (kept)
+--------------------------------------- */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 6s ease-in-out infinite;
+}
