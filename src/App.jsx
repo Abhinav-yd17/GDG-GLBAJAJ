@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { AdminProvider } from './context/AdminContext'
 import { EventProvider } from './context/EventContext'
+
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 import PageTransition from './components/common/PageTransition'
-import ScrollToTop from './components/layout/ScrollToTop'
+
+// Correct Components
+import ScrollToTopRoute from "./components/common/ScrollToTopRoute";   // Auto scroll reset
+import ScrollButton from "./components/common/ScrollButton";           // Floating button
 
 // Pages
 import Home from './pages/Home'
@@ -25,9 +29,13 @@ function App() {
       <AdminProvider>
         <EventProvider>
           <Router>
-            <ScrollToTop />
+
+            {/* Fixes bottom scroll issue */}
+            <ScrollToTopRoute />
+
             <div className="App bg-backgroundDark min-h-screen">
               <Navbar />
+
               <PageTransition>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -41,8 +49,13 @@ function App() {
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </PageTransition>
+
               <Footer />
+
+              {/* Floating scroll-to-top button */}
+              <ScrollButton />
             </div>
+
           </Router>
         </EventProvider>
       </AdminProvider>
