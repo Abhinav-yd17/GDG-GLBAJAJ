@@ -79,7 +79,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-4"
           >
-            Google Developer Student Clubs
+            Google Developer Groups
           </motion.p>
 
           <motion.p
