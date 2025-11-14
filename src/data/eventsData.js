@@ -5,7 +5,7 @@ export const eventsData = [
     date: "2025-11-17",
     venue: "AB-1",
     description: "Learn Git and GitHub fundamentals with hands-on labs and win exciting prizes",
-    image: "src/assets/images/events/devfest/hackathon/workshops/Github.png",
+    image: "src/assets/images/events/workshops/Github.png",
     category: "workshop",
     status: "upcoming",
     attendees: "100+",
