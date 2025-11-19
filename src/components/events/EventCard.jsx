@@ -1,16 +1,16 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Calendar, MapPin, Clock, Users, Edit } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Calendar, MapPin, Clock, Users, Edit, ChevronDown, ChevronUp } from 'lucide-react'
 import { formatDate } from '../../utils/helpers'
 import { useAdmin } from '../../context/AdminContext'
 
 const EventCard = ({ event, index }) => {
   const { isAdmin } = useAdmin()
+  const [showMore, setShowMore] = useState(false)
 
   /* ================================
         GOOGLE COLOR SYSTEM
      ================================= */
-
   const google = {
     blue: "text-googleBlue bg-googleBlue/10 border-googleBlue",
     red: "text-googleRed bg-googleRed/10 border-googleRed",
@@ -18,9 +18,7 @@ const EventCard = ({ event, index }) => {
     green: "text-googleGreen bg-googleGreen/10 border-googleGreen",
   }
 
-  /* ---------------------------
-     STATUS BADGE COLORS
-  ---------------------------- */
+  /* STATUS BADGE COLORS */
   const getStatusColor = (status) => {
     switch (status) {
       case "upcoming": return `${google.green}`
@@ -30,9 +28,7 @@ const EventCard = ({ event, index }) => {
     }
   }
 
-  /* ---------------------------
-     CATEGORY COLORS
-  ---------------------------- */
+  /* CATEGORY COLORS */
   const getCategoryColor = (category) => {
     switch (category) {
       case "workshop": return google.blue
@@ -45,6 +41,7 @@ const EventCard = ({ event, index }) => {
 
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -103,7 +100,7 @@ const EventCard = ({ event, index }) => {
         {event.description}
       </p>
 
-      {/* Event Meta Info */}
+      {/* Meta Info */}
       <div className="space-y-2 mb-4">
 
         <div className="flex items-center text-gray-600 dark:text-gray-400">
@@ -128,9 +125,69 @@ const EventCard = ({ event, index }) => {
 
       </div>
 
+      {/* More Details Button */}
+      <button
+        onClick={() => setShowMore(!showMore)}
+        className="
+          w-full mt-3 py-2 rounded-lg 
+          bg-gray-200 dark:bg-darkBgHover
+          text-gray-700 dark:text-gray-300
+          hover:bg-gray-300 dark:hover:bg-darkBorder 
+          flex items-center justify-center gap-2
+          transition-all font-medium
+        "
+      >
+        {showMore ? "Hide Details" : "More Details"}
+        {showMore ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+      </button>
+
+      {/* EXPANDABLE DETAILS */}
+      <AnimatePresence>
+        {showMore && (
+          <motion.div
+            layout
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="mt-4 overflow-hidden"
+          >
+            <div className="
+              p-4 rounded-lg border 
+              bg-gray-50 dark:bg-darkBg 
+              border-gray-200 dark:border-darkBorder
+            ">
+
+              {event.fullDescription && (
+                <p className="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+                  {event.fullDescription}
+                </p>
+              )}
+
+              {event.speakers && (
+                <p className="text-gray-600 dark:text-gray-300">
+                  <strong>Speakers:</strong> {event.speakers}
+                </p>
+              )}
+
+              {event.registrationLink && (
+                <a
+                  href={event.registrationLink}
+                  target="_blank"
+                  className="block mt-3 text-googleBlue dark:text-googleYellow underline"
+                >
+                  Register Here →
+                </a>
+              )}
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Admin Edit Button */}
       {isAdmin && (
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-3">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
