@@ -16,21 +16,23 @@ const Team = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [filter, setFilter] = useState('all')
 
+  // NORMALIZED ROLES (important for correct filtering)
   const roles = [
     'all',
-    'gdsc lead',
+    'faculty coordinator',
+    'gdg lead',
     'technical lead',
-    'web development lead',
-    'ai/ml lead',
-    'cloud lead',
-    'outreach lead',
-    'design lead',
-    'content lead',
-    'faculty coordinator'
+    'CyberSecurity lead',
+    'event management lead',
+    'ai-ml lead',
+    'Competitive Programming lead',
+    'Devlopment lead',
+    'graphic designing lead',
   ]
 
   const normalizedSearch = searchTerm.toLowerCase().trim()
 
+  // FILTER MEMBERS BY SEARCH + ROLE
   const filteredMembers = teamData.filter(member => {
     const matchesSearch =
       (member.name || '').toLowerCase().includes(normalizedSearch) ||
@@ -39,14 +41,14 @@ const Team = () => {
 
     const matchesFilter =
       filter === 'all' ||
-      (member.role || '').toLowerCase() === filter
+      (member.role || '').toLowerCase() === filter.toLowerCase()
 
     return matchesSearch && matchesFilter
   })
 
-  // Keep ALL roles including faculty coordinator
+  // GROUP MEMBERS BY ROLE
   const membersByRole = filteredMembers.reduce((acc, member) => {
-    const role = member.role || 'Other'
+    const role = (member.role || 'Other')
 
     if (!acc[role]) acc[role] = []
     acc[role].push(member)
@@ -98,7 +100,10 @@ const Team = () => {
                       : `bg-gray-700 text-gray-300 hover:bg-gray-600 border-gray-600`
                   }`}
                 >
-                  {role.charAt(0).toUpperCase() + role.slice(1)}
+                  {role
+                    .split(" ")
+                    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                    .join(" ")}
                 </button>
               ))}
             </div>
@@ -120,7 +125,7 @@ const Team = () => {
         ) : (
           <div className="space-y-16">
 
-            {/* Role Sections (faculty coordinator is included normally) */}
+            {/* Dynamic Role Sections */}
             {Object.entries(membersByRole).map(([role, members], roleIndex) => (
               <motion.section
                 key={role}
@@ -136,6 +141,7 @@ const Team = () => {
                   {role}
                 </h2>
 
+                {/* Member Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {members.map((member, index) => (
                     <TeamMemberCard key={member.id} member={member} index={index} />
