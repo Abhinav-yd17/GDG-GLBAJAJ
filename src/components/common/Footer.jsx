@@ -48,7 +48,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-lightBg dark:bg-darkBg border-t border-border relative overflow-hidden">
-      {/* Background subtle color shapes */}
+
+      {/* Background subtle shapes */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-10 left-10 w-20 h-20 bg-googleBlue rounded-full blur-xl"></div>
         <div className="absolute bottom-10 right-10 w-16 h-16 bg-googleGreen rounded-full blur-xl"></div>
@@ -77,7 +78,7 @@ const Footer = () => {
               </p>
 
               <div className="flex space-x-3">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
@@ -101,7 +102,7 @@ const Footer = () => {
               </h3>
 
               <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
+                {quickLinks.map((link) => (
                   <motion.li key={link.name} variants={itemVariants}>
                     <Link
                       to={link.path}
@@ -124,7 +125,7 @@ const Footer = () => {
               </h3>
 
               <ul className="space-y-3">
-                {resourceLinks.map((link, index) => (
+                {resourceLinks.map((link) => (
                   <motion.li key={link.name} variants={itemVariants}>
                     <a
                       href={link.href}
@@ -176,11 +177,34 @@ const Footer = () => {
             </motion.div>
           </motion.div>
 
-          {/* Bottom bar */}
+          {/* ======= Bottom Bar with Your Credit ======= */}
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 dark:text-gray-400 text-sm">
-              © {currentYear} GDG GL Bajaj. All rights reserved.
-            </p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center md:items-start"
+            >
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                © {currentYear} GDG GL Bajaj. All rights reserved.
+              </p>
+
+              {/* ⭐ Developer Credit */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-gray-600 dark:text-gray-300 text-sm mt-2 flex items-center gap-2"
+              >
+                <Sparkles className="h-4 w-4 text-googleBlue dark:text-googleYellow" />
+                Developed by
+                <span className="font-semibold text-googleBlue dark:text-googleGreen">
+                  Abhinav
+                </span>
+                — Developer at GDG
+              </motion.p>
+            </motion.div>
 
             <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mt-4 md:mt-0">
               <a href="/privacy" className="hover:text-googleBlue">Privacy Policy</a>
@@ -190,6 +214,7 @@ const Footer = () => {
               <a href="/code-of-conduct" className="hover:text-googleBlue">Code of Conduct</a>
             </div>
           </div>
+
         </div>
       </div>
     </footer>

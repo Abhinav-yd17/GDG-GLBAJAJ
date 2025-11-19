@@ -25,7 +25,8 @@ const Team = () => {
     'cloud lead',
     'outreach lead',
     'design lead',
-    'content lead'
+    'content lead',
+    'faculty coordinator'
   ]
 
   const normalizedSearch = searchTerm.toLowerCase().trim()
@@ -36,22 +37,22 @@ const Team = () => {
       (member.role || '').toLowerCase().includes(normalizedSearch) ||
       (member.branch || '').toLowerCase().includes(normalizedSearch)
 
-    const matchesFilter = filter === 'all' || (member.role || '').toLowerCase() === filter
+    const matchesFilter =
+      filter === 'all' ||
+      (member.role || '').toLowerCase() === filter
 
     return matchesSearch && matchesFilter
   })
 
+  // Keep ALL roles including faculty coordinator
   const membersByRole = filteredMembers.reduce((acc, member) => {
     const role = member.role || 'Other'
+
     if (!acc[role]) acc[role] = []
     acc[role].push(member)
+
     return acc
   }, {})
-
-  // Faculty coordinators (case-insensitive match) — show separately
-  const facultyCoordinators = teamData.filter(
-    (m) => (m.role || '').toLowerCase() === 'faculty coordinator'
-  )
 
   return (
     <div className="pt-20 min-h-screen">
@@ -87,7 +88,7 @@ const Team = () => {
 
             {/* Role Filters */}
             <div className="flex flex-wrap gap-2">
-              {roles.map((role, i) => (
+              {roles.map((role) => (
                 <button
                   key={role}
                   onClick={() => setFilter(role)}
@@ -119,7 +120,7 @@ const Team = () => {
         ) : (
           <div className="space-y-16">
 
-            {/* Role Sections */}
+            {/* Role Sections (faculty coordinator is included normally) */}
             {Object.entries(membersByRole).map(([role, members], roleIndex) => (
               <motion.section
                 key={role}
@@ -127,50 +128,21 @@ const Team = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-
-                {/* Section Title — visible in light & dark */}
                 <h2
-                  className={`text-3xl font-bold 
-                  text-gray-900 dark:text-white 
-                  mb-8 pb-2 border-b 
-                  ${googleColors[roleIndex % 4].split(" ")[1]}`}
+                  className={`text-3xl font-bold text-gray-900 dark:text-white mb-8 pb-2 border-b ${
+                    googleColors[roleIndex % 4].split(" ")[1]
+                  }`}
                 >
                   {role}
                 </h2>
 
-                {/* Member Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {members.map((member, index) => (
                     <TeamMemberCard key={member.id} member={member} index={index} />
                   ))}
                 </div>
-
               </motion.section>
             ))}
-
-            {/* ============================
-                FACULTY COORDINATOR SECTION
-            ============================= */}
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-8"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b border-googleBlue">
-                Faculty Coordinator
-              </h2>
-
-              {facultyCoordinators.length === 0 ? (
-                <div className="text-sm text-gray-500">No faculty coordinator added yet.</div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {facultyCoordinators.map((member, idx) => (
-                    <TeamMemberCard key={member.id} member={member} index={idx} />
-                  ))}
-                </div>
-              )}
-            </motion.section>
 
           </div>
         )}

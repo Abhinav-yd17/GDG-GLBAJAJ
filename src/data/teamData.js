@@ -1,6 +1,6 @@
 export const teamData = [
   {
-  id: 999,
+  id: 1,
   name: "Dr. Sunita Sharma",
   role: "Faculty Coordinator",
   year: "",
@@ -13,7 +13,7 @@ export const teamData = [
 },
 
   {
-    id: 1,
+    id: 2,
     name: "RatnaPriya",
     role: "GDG Lead",
     image: "/images/team/aarav.jpg",
@@ -24,7 +24,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 2,
+    id: 3,
     name: "Yash Raghuvanshi",
     role: "Technical Lead",
     image: "/images/team/priya.jpg",
@@ -35,7 +35,7 @@ export const teamData = [
     branch: "Information Technology"
   },
   {
-    id: 3,
+    id: 4,
     name: "Priyanshu Mishra",
     role: "CyberSecurity Lead",
     image: "/images/team/rohan.jpg",
@@ -46,7 +46,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 4,
+    id: 5,
     name: "Divyam",
     role: "Event Management Lead",
     image: "/images/team/neha.jpg",
@@ -57,7 +57,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 5,
+    id: 6,
     name: "Prakhar",
     role: "AI-ML Lead",
     image: "/images/team/siddharth.jpg",
@@ -68,7 +68,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 6,
+    id: 7,
     name: "Vipul Rawat",
     role: "Competitive Programming Lead",
     image: "/images/team/ananya.jpg",
@@ -79,7 +79,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 7,
+    id: 8,
     name: "Ananya",
     role: "Devlopment Lead",
     image: "/images/team/vikram.jpg",
@@ -90,7 +90,7 @@ export const teamData = [
     branch: "Computer Science"
   },
   {
-    id: 8,
+    id: 9,
     name: "Mridul",
     role: "Graphic Designing Lead",
     image: "/images/team/isha.jpg",
