@@ -68,7 +68,7 @@ const Contact = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
+
           {/* CONTACT INFO */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -79,7 +79,7 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               Contact <span className="text-neonBlue">Information</span>
             </h3>
-            
+
             <div className="space-y-6 mb-8">
               {contactInfo.map((item, index) => (
                 <motion.div
@@ -146,8 +146,9 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Send us a <span className="text-neonBlue">Message</span>
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -163,7 +164,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Email Address
@@ -180,6 +181,7 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* SUBJECT */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Subject
@@ -195,6 +197,7 @@ const Contact = () => {
                   />
                 </div>
 
+                {/* MESSAGE */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Message
@@ -224,7 +227,7 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {/* ================= GOOGLE MAP CARD ================= */}
+        {/* ================= GOOGLE MAP + BACKGROUND ================= */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -235,24 +238,37 @@ const Contact = () => {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
             Find Us at <span className="text-neonPurple">GL Bajaj</span>
           </h3>
-          
+
           <a
-            href="https://www.google.com/maps/place/GL+Bajaj+Institute+of+Technology+%26+Management/@28.4722331,77.4863866,17z/data=!3m1!4b1!4m6!3m5!1s0x390ceb193588358f:0x8274cec5a1321578!8m2!3d28.4722284!4d77.4889615!16s%2Fg%2F11ghrkc0zw?entry=ttu&g_ep=EgoyMDI1MTExMS4wIKXMDSoASAFQAw%3D%3D"
+            href="https://www.google.com/maps/place/GL+Bajaj+Institute+of+Technology+%26+Management/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <div className="neon-card p-6 rounded-2xl bg-white dark:bg-[#0d0d0e] border border-gray-200 dark:border-gray-700 cursor-pointer hover:scale-[1.02] transition-transform">
-              <div className="aspect-video bg-gradient-to-br from-neonBlue/20 to-neonPurple/20 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-neonBlue mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+
+              {/* BACKGROUND IMAGE BOX */}
+              <div
+                className="aspect-video rounded-xl bg-cover bg-center bg-no-repeat flex items-center justify-center relative"
+                style={{
+                  backgroundImage: "url('/assets/images/community/GLB.jpg')",
+                }}
+              >
+
+                {/* LIGHT OVERLAY */}
+                <div className="absolute inset-0 bg-black/20"></div>
+
+                {/* CONTENT CARD */}
+                <div className="relative bg-white/50 dark:bg-black/30 backdrop-blur-sm px-8 py-6 rounded-lg max-w-xl text-center shadow-lg">
+                  <MapPin className="h-10 w-10 text-neonBlue mx-auto mb-3" />
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
                     G.L. Bajaj Institute of Technology and Management
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
                     Plot No. 2, Knowledge Park III, Greater Noida, Uttar Pradesh 201306
                   </p>
                 </div>
               </div>
+
             </div>
           </a>
         </motion.section>

@@ -176,7 +176,7 @@ const About = () => {
                   "
                 >
                   <img
-                    src="/images/about/team-photo.jpg"
+                    src="/assets/images/community/About.png"
                     className="w-full h-64 object-cover rounded-xl mb-6"
                     alt="Team"
                   />

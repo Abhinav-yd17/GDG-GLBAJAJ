@@ -1,27 +1,34 @@
-// Mock API functions - replace with actual API calls
+const API_BASE = "http://localhost:5000/api";
+
 export const api = {
+  // GET events
   getEvents: async () => {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(eventsData)
-      }, 1000)
-    })
+    const res = await fetch(`${API_BASE}/events`);
+    return res.json();
   },
 
-  getTeamMembers: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(teamData)
-      }, 1000)
-    })
+  // GET team
+  getTeam: async () => {
+    const res = await fetch(`${API_BASE}/team`);
+    return res.json();
   },
 
-  getGalleryImages: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(galleryData)
-      }, 1000)
-    })
+  // LOGIN admin
+  login: async (email, password) => {
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    return res.json();
   },
-}
+
+  // File Upload
+  uploadFile: async (formData) => {
+    const res = await fetch(`${API_BASE}/upload`, {
+      method: "POST",
+      body: formData
+    });
+    return res.json();
+  }
+};
