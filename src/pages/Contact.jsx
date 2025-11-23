@@ -240,7 +240,7 @@ const Contact = () => {
           </h3>
 
           <a
-            href="https://www.google.com/maps/place/GL+Bajaj+Institute+of+Technology+%26+Management/"
+            href="https://www.google.com/maps/place/GL+Bajaj+Institute+of+Technology+%26+Management/@28.4722331,77.4863866,17z/data=!3m1!4b1!4m6!3m5!1s0x390ceb193588358f:0x8274cec5a1321578!8m2!3d28.4722284!4d77.4889615!16s%2Fg%2F11ghrkc0zw?entry=ttu&g_ep=EgoyMDI1MTEyMC4xIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
           >

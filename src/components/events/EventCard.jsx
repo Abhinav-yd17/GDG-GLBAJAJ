@@ -46,10 +46,7 @@ const EventCard = ({ event, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      whileHover={{
-        scale: 1.02,
-        transition: { duration: 0.3 }
-      }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
       className="
         p-6 rounded-xl shadow-md transition-all
         bg-white border border-gray-200 
@@ -58,12 +55,20 @@ const EventCard = ({ event, index }) => {
       "
     >
 
-      {/* Event Image */}
-      <div className="relative mb-4 overflow-hidden rounded-lg">
+      {/* =====================
+            EVENT IMAGE FIXED
+         ===================== */}
+      <div className="relative mb-4 overflow-hidden rounded-xl">
         <img
           src={event.image}
           alt={event.title}
-          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+          className="
+            w-full 
+            h-64 
+            object-cover 
+            rounded-xl
+            transition-transform duration-500
+          "
         />
 
         {/* Status Badge */}
@@ -88,10 +93,7 @@ const EventCard = ({ event, index }) => {
       </div>
 
       {/* Event Title */}
-      <h3 className="
-        text-xl font-semibold mb-3 
-        text-googleBlue dark:text-googleYellow
-      ">
+      <h3 className="text-xl font-semibold mb-3 text-googleBlue dark:text-googleYellow">
         {event.title}
       </h3>
 
@@ -141,7 +143,7 @@ const EventCard = ({ event, index }) => {
         {showMore ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
       </button>
 
-      {/* EXPANDABLE DETAILS */}
+      {/* Expandable Details */}
       <AnimatePresence>
         {showMore && (
           <motion.div
